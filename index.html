@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="server.js">
+    <link rel="stylesheet" href="email.js">
+    <title>Sharingan_Capturer.in</title>
+
+    <style>
+        /* Reset some default styles */
+        body,
+        h1,
+        h2,
+        p {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Global Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: rgb(235, 252, 137);
+            color: #333;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+            padding: 10px;
+        }
+
+        /* Header Styles */
+        .Home-container {
+            background-image: url(Images/wp4837265-itachi-for-pc-wallpapers.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
+
+        .Home-container h1 {
+            color: white;
+            font-weight: bolder;
+            font-size: 3em;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .Home-nav-container {
+            margin-top: 20px;
+            background-color: white;
+            border-radius: 20px;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+            margin: 0 15px;
+            font-size: 18px;
+            transition: color 0.3s ease-in-out;
+        }
+
+        .nav-link:hover {
+            color: tomato;
+        }
+
+        /* About Section Styles */
+        .About-container {
+            padding: 80px 20px;
+            text-align: center;
+            background-color: #333;
+        }
+
+        .About-container h1 {
+            color: white;
+            font-weight: bold;
+        }
+
+        .About-column-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .About-column-1 img {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .About-column-2 {
+            flex: 1;
+            max-width: 600px;
+            margin: 20px;
+        }
+
+        .About-column-2 p {
+            font-size: 1.2em;
+            line-height: 1.8;
+            color: white;
+        }
+
+        /* Gallery Section Styles */
+        .Gallary-container {
+            padding: 80px 20px;
+            text-align: center;
+            background-color: rgb(168, 252, 137);
+        }
+
+        .Gallary-container h1 {
+            margin-bottom: 50px;
+            font-weight: bold;
+            color: black;
+        }
+
+        .Gallary-images-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            overflow: hidden;
+        }
+
+        .images {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px;
+        }
+
+        .images img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .images img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Contact Section Styles */
+        .Contact-container {
+            padding: 80px 20px;
+            text-align: center;
+            background-image: url(Images/eyeemfiltered1604413925597.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        .Contact-container h1 {
+            color: white;
+            font-weight: bold;
+        }
+
+        .Contact-form {
+            max-width: 400px;
+            margin: auto;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            transition: border-color 0.3s ease-in-out;
+        }
+
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        /* Scroll to Top Button Styles */
+        #scroll-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            display: none;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        #scroll-to-top:hover {
+            background-color: #0056b3;
+        }
+
+        /* Responsive Styles */
+        @media only screen and (max-width: 768px) {
+            .About-column-container {
+                flex-direction: column;
+            }
+
+            .Gallary-images-container {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!--header-->
+    <section id="Home">
+        <div class="Home-container">
+            <h1>Sharingan Capturer</h1>
+
+            <nav class="Home-nav-container">
+                <a href="#Home" class="nav-link">Home</a>
+                <a href="#About" class="nav-link">About</a>
+                <a href="#Gallary" class="nav-link">Gallary</a>
+                <a href="#Contact" class="nav-link">Contact</a>
+            </nav>
+        </div>
+    </section>
+
+    <!--about-->
+    <section id="About">
+        <div class="About-container">
+            <h1>About Me</h1>
+
+            <div class="About-column-container">
+                <div class="About-column-1">
+                    <img src="Images/IMG_20190526_183112_593~2.jpg" alt="profile">
+                </div>
+                <div class="About-column-2">
+                    <p>Hello! I'm Omkar Dhamdhere, a passionate mobile photographer capturing moments and stories through
+                        the lens of my mobile device. With an eye for detail and a love for storytelling, I turn
+                        ordinary scenes into extraordinary photographs. Whether it's the vibrant hues of a sunset or the
+                        candid expressions of people, I strive to freeze moments in time that evoke emotion and tell a
+                        unique narrative. My journey in mobile photography is not just about taking pictures; it's about
+                        creating visual poetry that resonates with the viewers. Join me in exploring the world through
+                        my lens!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--gallary-->
+    <section id="Gallary">
+        <div class="Gallary-container">
+            <h1>My Work</h1>
+            <div class="Gallary-images-container">
+                <div class="images"> <img src="Images/IMG20200420172828.jpg"> </div>
+                <div class="images"> <img src="Images/IMG20200420173527.jpg"></div>
+                <div class="images"> <img src="Images/IMG20200510183712.jpg"></div>
+                <div class="images"> <img src="Images/IMG20200510183741.jpg" alt=""></div>
+                <div class="images"> <img src="Images/IMG20210312070852.jpg" alt=""></div>
+                <div class="images"> <img src="Images/IMG20201113114640-01.jpg" alt=""></div>
+                <div class="images"><img src="Images/eyeemfiltered1597249513610-01.jpg" alt=""></div>
+                <div class="images"><img src="Images/eyeemfiltered1604413925597.jpg" alt=""></div>
+                <div class="images"><img src="Images/IMG20190920155221-01 (1).jpg" alt=""></div>
+                <div class="images"><img src="Images/IMG20191101134724-01.jpeg" alt=""></div>
+                <div class="images"><img src="Images/IMG20191101161409-01.jpeg" alt=""></div>
+                <div class="images"><img src="Images/IMG_20210212_175421_015.jpg" alt=""></div>
+                <div class="images"><img src="Images/IMG_20201021_170830-01.jpg" alt=""></div>
+                <div class="images"><img src="Images/IMG20210617074207-01.jpg" alt=""></div>
+                <div class="images"><img src="Images/IMG20210312070852.jpg" alt=""></div>
+                <div class="images"><img src="Images/IMG20210221082742-01.jpg" alt=""></div>
+            </div>
+        </div>
+
+    </section>
+
+    <!--contact-->
+    <section id="Contact">
+        <div class="Contact-container">
+            <h1>Contact Me</h1>
+            <form class="Contact-form" action="/send-email" method="post" id="contactForm">
+                <input type="text" name="name" placeholder="Your Name">
+                <input type="email" name="email" placeholder="Your Email">
+                <textarea name="message" placeholder="Your Message"></textarea>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+    </section>
+
+    <!--footer-->
+    <footer>
+        &copy; 2023 | Web Design by Omkar Dhamdhere.
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button id="scroll-to-top" onclick="scrollToTop()">↑</button>
+
+    <script>
+        // JavaScript function to scroll back to the top
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Show/hide scroll-to-top button based on scroll position
+        window.onscroll = function () {
+            var scrollButton = document.getElementById("scroll-to-top");
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                scrollButton.style.display = "block";
+            } else {
+                scrollButton.style.display = "none";
+            }
+        };
+
+
+    </script>
+
+</body>
+
+</html>
